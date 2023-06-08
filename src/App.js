@@ -14,6 +14,10 @@ import { useGetCardsMutation } from './services/card'
 /* Assets */
 import { industryPayloadMapper, industryTitleMapper, regionPayloadMapper } from '../src/assets/mappers/dropdowns'
 
+/* Data for dropdowns */
+import Industries from './components/Dropdown/Industries.data.json';
+import Regions from './components/Dropdown/Regions.data.json';
+
 import './App.css';
 
 function App() {
@@ -22,6 +26,7 @@ function App() {
   const [emptyCards, setEmpty] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [clickOutside, setClickOutside] = useState(false);
 
   /* Payload */
   const [industrySelected, setIndustrySelected] = useState('');
@@ -48,7 +53,7 @@ function App() {
       order_by: 'title',
       page: page,
       post_type: ['customers'],
-      // region: regionPayloadMapper(region),
+      region: regionPayloadMapper(region),
       search: '',
     };
 
@@ -101,13 +106,35 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <div style={{ display: 'flex', justifyContent: 'center', flexGrow: '1', }}>
+    <div className="App" onClick={() => { setClickOutside(!clickOutside); }}>
+      <div className="result-customers">
+        <div className="dropdown-container">
+        <Dropdown
+          data={Industries}
+          clickOutside={clickOutside}
+          fristTitle={industryTitleMapper(0)}
+          selected={industry => { getCardsRequest(1, industry, regionSelected); }}
+          selectedTitle={industryTitleMapper(industrySelected)}
+        />
+        <Dropdown
+          data={Regions}
+          clickOutside={clickOutside}
+          fristTitle={regionPayloadMapper(0)}
+          selected={region => { getCardsRequest(1, industrySelected, region); }}
+          selectedTitle={regionPayloadMapper(industrySelected)}
+        />
+        <Dropdown
+          data={Regions}
+          clickOutside={clickOutside}
+          fristTitle={regionPayloadMapper(0)}
+          selected={region => { getCardsRequest(1, industrySelected, region); }}
+          selectedTitle={regionPayloadMapper(industrySelected)}
+        />
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'center', flexGrow: '1', zIndex: '1' }}>
         <div className="result-customers">
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Dropdown industry={industry => { getCardsRequest(1, industry, regionSelected); }} industryTitle={industryTitleMapper(industrySelected)}/>
-            {/* <Dropdown2 industry1={industry => { getCardsRequest(1, industrySelected, industrySelected); }}/> */}
-          </div>
           <div className="card-container">
             {isGetLoading && <Loading />}
             {cards}

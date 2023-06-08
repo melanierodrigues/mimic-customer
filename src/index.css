@@ -2,11 +2,18 @@
   --color: #5405bd;
   --color--primary: #180136;
   --color--purple-300: #bf91fc;
+  --color--white: #fff;
+
+  --font-gilroy: '__gilroyFont_e0bf30', '__gilroyFont_Fallback_e0bf30', arial, futura;
+  --font-inter: 'Inter', helvetica, arial;
+  --font-talkdesk: '__iconsFont_89d5cb', '__iconsFont_Fallback_89d5cb';
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
