@@ -12,7 +12,7 @@ import Pagination from './components/Pagination/Pagination';
 import { useGetCardsMutation } from './services/card'
 
 /* Assets */
-import { industryPayloadMapper, regionPayloadMapper } from '../src/assets/mappers/dropdowns'
+import { industryPayloadMapper, industryTitleMapper, regionPayloadMapper } from '../src/assets/mappers/dropdowns'
 
 import './App.css';
 
@@ -105,8 +105,8 @@ function App() {
       <div style={{ display: 'flex', justifyContent: 'center', flexGrow: '1', }}>
         <div className="result-customers">
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Dropdown industry={industry => { getCardsRequest(1, industry, regionSelected); }}/>
-            {/* <Dropdown2 industry1={industry => { getCardsRequest(1, industrySelected, industry); }}/> */}
+            <Dropdown industry={industry => { getCardsRequest(1, industry, regionSelected); }} industryTitle={industryTitleMapper(industrySelected)}/>
+            {/* <Dropdown2 industry1={industry => { getCardsRequest(1, industrySelected, industrySelected); }}/> */}
           </div>
           <div className="card-container">
             {isGetLoading && <Loading />}

@@ -1,15 +1,18 @@
 import clsx from 'clsx';
 import { useState } from 'react';
 
+import { industryTitleMapper } from '../../assets/mappers/dropdowns'
+
 import data from './Dropdown.data.json';
 
 import './Dropdown.css';
 
 const Dropdown = (props) => {
   const {
-    industry
+    industry,
+    industryTitle
   } = props;
-  const { options, title } = data
+  const { options } = data
 
   const [state, setState] = useState({
     open: false,
@@ -34,7 +37,7 @@ const Dropdown = (props) => {
         onClick={() => toggleDropdown()}
         className="dropdown__toggle dropdown__list-item"
       >
-        {title}
+        {industryTitle !== undefined ? industryTitle : industryTitleMapper(0)}
         <i class="fa fa-angle-down" aria-hidden="true"></i>
       </div>
 
