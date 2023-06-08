@@ -4,7 +4,7 @@ import Card from './components/Card/Card';
 // import Dropdown from './components/Dropdown/Dropdown';
 import EmptyState from './components/EmptyState/EmptyState';
 import Loading from './components/Loading/Loading';
-// import Pagination from './components/Pagination/Pagination';
+import Pagination from './components/Pagination/Pagination';
 
 import './App.css';
 
@@ -15,7 +15,7 @@ function App() {
   const [cards, setCards] = useState([]);
   const [emptyCards, setEmpty] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
-  // const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   /* Payload */
   const [industrySelected, setIndustrySelected] = useState('');
@@ -107,13 +107,13 @@ function App() {
             {cards}
           </div>
           {emptyCards}
-          {/* <Pagination
+          <Pagination
             className="pagination-bar"
             currentPage={currentPage}
             totalCount={totalCount}
             pageSize={20}
-            onPageChange={page => { setCurrentPage(page); onSubmit(page); }}
-          /> */}
+            onPageChange={page => { setCurrentPage(page); getCardsRequest(page); }}
+          />
         </div>
       </div>
     </div>
