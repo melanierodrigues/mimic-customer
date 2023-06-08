@@ -1,31 +1,17 @@
-import clsx from 'clsx'
+import '../Card/Card.scss'
 
-import data from './Card.data.json'
-
-import './Card.css'
-
-const Card = () => {
-  const { image, label, title, content } = data
+const Card = (props) => {
   return (
-    <div
-      className="card card__link"
-    >
-      <div className="card__media">
-        <img {...image} />
+    <a className="card-wrapper" href={`https://www.talkdesk.com/${props.link.url}`} target={props.link.target}>
+      <div className="card-wrapper image-container">
+        <img src={props.image} alt={props.imageAlt} />
       </div>
-
-      <div className={clsx('card__text -margin-top-16')}>
-        <span className="-margin-bottom-4" >
-          {label.text}
-        </span>
-
-        <h5 className="card__title -margin-bottom-4 -margin-bottom-sm-6 -margin-bottom-md-4 -margin-bottom-xl-6" >
-          {title}
-        </h5>
-
-        <p className="card__description text text--16">{content?.text}</p>
-      </div>
-    </div >
+      <a className="text-container" href={`https://www.talkdesk.com/${props.link.url}`} target={props.link.target}>
+        <span className="label">{props.label}</span>
+        <h5 className="title">{props.title}</h5>
+        {/* <p if className="description">{props.content?.text}</p> */}
+      </a>
+    </a>
   )
 }
 

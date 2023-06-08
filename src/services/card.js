@@ -5,7 +5,7 @@ export const cardApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
   tagTypes: ['Post'],
   endpoints: (builder) => ({
-    cards: builder.mutation({
+    getCards: builder.mutation({
         query(payload) {
           return {
             url: 'https://cms.talkdesk.com/wp-json/web-api/v1/content/cards',
@@ -22,4 +22,4 @@ export const cardApi = createApi({
   }),
 })
 
-export const { useCardsMutation } = cardApi
+export const { useGetCardsMutation } = cardApi
