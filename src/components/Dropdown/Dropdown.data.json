@@ -1,4 +1,17 @@
 {
-  "title": "Dropdown Menu",
-  "options": ["Apple", "Orange", "Pear", "Mango"]
+  "title": "ALL INDUSTRIES",
+  "options": [
+    "All Industries",
+    "Business Services",
+    "Communications, Media & Internet",
+    "Financial Services & Insurance",
+    "Government & Education",
+    "Healthcare & Life Sciences",
+    "Information Technology & Services",
+    "Manufacturing",
+    "Retail & Consumer Goods",
+    "Staffing & Employment Services",
+    "Transportation & Hospitality",
+    "Transportation & Logistics"
+  ]
 }

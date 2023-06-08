@@ -1,14 +1,20 @@
+/* React */
 import { useState, useEffect } from 'react';
 
+/* Components */
 import Card from './components/Card/Card';
-// import Dropdown from './components/Dropdown/Dropdown';
+import Dropdown from './components/Dropdown/Dropdown';
 import EmptyState from './components/EmptyState/EmptyState';
 import Loading from './components/Loading/Loading';
 import Pagination from './components/Pagination/Pagination';
 
-import './App.css';
-
+/* Store */
 import { useGetCardsMutation } from './services/card'
+
+/* Assets */
+import { industryPayloadMapper, regionPayloadMapper } from '../src/assets/mappers/dropdowns'
+
+import './App.css';
 
 function App() {
   /* Data */
@@ -35,7 +41,7 @@ function App() {
 
     const payload = {
       category: [],
-      // industry: industryPayloadMapper(industry),
+      industry: industryPayloadMapper(industry),
       // integration: integration,
       limit: 20,
       order: 'ASC',
@@ -99,8 +105,8 @@ function App() {
       <div style={{ display: 'flex', justifyContent: 'center', flexGrow: '1', }}>
         <div className="result-customers">
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            {/* <Dropdown industry1={industry => { onSubmit(1, industry, regionSelected); }}/>
-            <Dropdown2 industry1={industry => { onSubmit(1, industrySelected, industry); }}/> */}
+            <Dropdown industry={industry => { getCardsRequest(1, industry, regionSelected); }}/>
+            {/* <Dropdown2 industry1={industry => { getCardsRequest(1, industrySelected, industry); }}/> */}
           </div>
           <div className="card-container">
             {isGetLoading && <Loading />}

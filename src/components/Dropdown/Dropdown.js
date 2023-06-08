@@ -5,7 +5,10 @@ import data from './Dropdown.data.json';
 
 import './Dropdown.css';
 
-const Dropdown = () => {
+const Dropdown = (props) => {
+  const {
+    industry
+  } = props;
   const { options, title } = data
 
   const [state, setState] = useState({
@@ -39,7 +42,7 @@ const Dropdown = () => {
         {options.map((option, i) => (
           <li
             key={i}
-            onClick={evt => handleClick(i)}
+            onClick={evt => { handleClick(i); industry(i) }}
             className={clsx("dropdown__list-item", i === state.selected && 'dropdown__list-item--active')}
           >
             {option}
