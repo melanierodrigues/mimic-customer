@@ -120,9 +120,14 @@ function App() {
     }
   }, [posts, isGetSuccess, isGetError]);
 
-  useEffect(() => {
-    getCardsRequest(1)
-  }, [])
+  /* Get data for cards when mounting the application */
+  const OnMountedCards = () => {
+    useEffect(() => {
+      getCardsRequest(1)
+    }, [])
+  }
+
+  OnMountedCards()
 
   return (
     <div className="App" onClick={() => { setClickOutside(!clickOutside); }}>
