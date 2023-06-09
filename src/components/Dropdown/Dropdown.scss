@@ -69,7 +69,8 @@
 }
 
 .dropdown__list--active {
-  max-height: 1000px;
+  max-height: 450px;
+  overflow-y: auto;
   opacity: 1;
 }
 
