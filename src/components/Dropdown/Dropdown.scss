@@ -29,6 +29,8 @@
 
   z-index: 2;
 
+  overflow: hidden;
+
   &.dropdown--active {
     box-shadow: 0 0.9375rem 1.5625rem 0 rgba(0,0,0,.2);
 
@@ -36,6 +38,8 @@
     border-top-left-radius: 0.5rem;
     background-color: var(--color);
     z-index: 3;
+
+    overflow: visible;
   }
 
   &:hover {
@@ -96,6 +100,9 @@
 
   padding: 0.71875rem 2.5rem 0.71875rem 0.875rem;
 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
   &.top__border--active {
     background-color: var(--color);
     color: var(--color--white);
@@ -107,6 +114,7 @@
 
 .dropdown__toggle {
   background: #fff;
+  overflow: hidden;
 }
 
 .dropdown__toggle:hover {

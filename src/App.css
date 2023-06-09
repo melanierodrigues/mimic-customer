@@ -58,7 +58,7 @@
     .dropdown-container {
       margin-bottom: 3rem;
 
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       row-gap: 1rem;
     }
   }
