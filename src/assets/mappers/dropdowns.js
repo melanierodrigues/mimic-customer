@@ -1,4 +1,4 @@
-/* Mapping dropdowns  */
+/* Industry - Mapping dropdowns */
 export const industryPayloadMapper = key => {
     const industry = {
         0: 'all-industries',
@@ -37,6 +37,47 @@ export const industryTitleMapper = key => {
     return title[key]
 }
 
+/* Integration - Mapping dropdowns */
+export const integrationPayloadMapper = key => {
+    const integration = {
+        0: 'all-integrations',
+        1: 'api',
+        2: 'custom-crm',
+        3: 'freshdesk',
+        4: 'help-scout',
+        5: 'intercom',
+        6: 'kustomer-crm',
+        7: 'microsoft-dynamics',
+        8: 'salesforce',
+        9: 'servicenow',
+        10: 'slack',
+        11: 'zendesk'
+    }
+
+    return integration[key]
+}
+
+export const integrationTitleMapper = key => {
+    const title = {
+        0: "All Integrations",
+        1: "API",
+        2: "Custom CRM",
+        3: "Freshdesk",
+        4: "Help Scout",
+        5: "Intercom",
+        6: "Kustomer CRM",
+        7: "Microsoft Dynamics",
+        8: "Salesforce",
+        9: "ServiceNow",
+        10: "Slack",
+        11: "Zendesk"
+    }
+
+    return title[key]
+}
+
+
+/* Region - Mapping dropdowns */
 export const regionPayloadMapper = key => {
     const region = {
         0: 'all-regions',
@@ -45,4 +86,14 @@ export const regionPayloadMapper = key => {
     }
 
     return region[key]
+}
+
+export const regionTitleMapper = key => {
+    const title = {
+        0: "All Regions",
+        1: "Americas",
+        2: "EMEA"
+    }
+
+    return title[key]
 }
