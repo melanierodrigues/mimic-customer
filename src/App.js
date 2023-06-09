@@ -11,7 +11,7 @@ import Pagination from './components/Pagination/Pagination';
 /* Store */
 import { useGetCardsMutation } from './services/card'
 
-/* Assets */
+/* Mappers */
 import {
   industryPayloadMapper,
   industryTitleMapper,
@@ -26,6 +26,7 @@ import industriesData from './components/Dropdown/industries-dropdown.data.json'
 import integrationData from './components/Dropdown/integration-dropdown.data.json';
 import regionsData from './components/Dropdown/regions-dropdown.data.json';
 
+/* Style */
 import './App.css';
 
 function App() {
@@ -36,19 +37,20 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [clickOutside, setClickOutside] = useState(true);
 
-  /* Payload */
-  const [industrySelected, setIndustrySelected] = useState('');
-  const [integrationSelected, setIntegrationSelected] = useState(''); 
-  const [regionSelected, setRegionSelected] = useState('');
-
+  /* GetCards State */
   const [getCards, {
     data: posts,
     isLoading: isGetLoading,
     isSuccess: isGetSuccess,
     isError: isGetError,
-    // error: getError,
   }] = useGetCardsMutation({ refetchOnMountOrArgChange: true });
 
+  /* Payload */
+  const [industrySelected, setIndustrySelected] = useState('');
+  const [integrationSelected, setIntegrationSelected] = useState(''); 
+  const [regionSelected, setRegionSelected] = useState('');
+
+  /* GetCards Request */
   const getCardsRequest = async (page, industry, region, integration) => {
     setIndustrySelected(industry)
     setRegionSelected(region)
@@ -76,6 +78,7 @@ function App() {
     }
   }
 
+  /* useEffect to load and render card data */
   useEffect(() => {
     setEmpty()
 
@@ -95,25 +98,26 @@ function App() {
         )
       }))
 
-      setTotalCount(posts.data.count_per.query)
-
       if (posts.data.empty) {
         setEmpty(
-          <EmptyState title={posts.data.empty.title} content={posts.data.empty.content} image={posts.data.empty.image.src} imageAlt={posts.data.empty.image.alt}/>
+          <EmptyState
+            title={posts.data.empty.title}
+            content={posts.data.empty.content}
+            image={posts.data.empty.image.src}
+            imageAlt={posts.data.empty.image.alt}/>
         )
       }
 
+      setTotalCount(posts.data.count_per.query)
       window.scrollTo(0, 0)
     }
 
     if (isGetError) {
       setCards(
-        <div>Error</div>
+        <h5 style={{ whiteSpace: 'nowrap', paddingLeft: '8.33333%', fontWeight: '700', margin: '0' }}>Please try again</h5>
       )
-
       window.scrollTo(0, 0)
     }
-
   }, [posts, isGetSuccess, isGetError]);
 
   useEffect(() => {
@@ -122,42 +126,52 @@ function App() {
 
   return (
     <div className="App" onClick={() => { setClickOutside(!clickOutside); }}>
-      <div style={{ paddingBlock: '14px' }}></div>
+      <div style={{ paddingBlock: '14px' }}/>
         <div className="result-customers">
-        <div style={{ width: '100%' }}>
-          <div className="dropdown-container">
-          <Dropdown
-            data={industriesData}
-            clickOutside={clickOutside}
-            fristTitle={industryTitleMapper(0)}
-            selected={industry => { getCardsRequest(1, industry, regionSelected, integrationSelected); }}
-            selectedTitle={industryTitleMapper(industrySelected)}
-          />
-          <Dropdown
-            data={regionsData}
-            clickOutside={clickOutside}
-            fristTitle={regionTitleMapper(0)}
-            selected={region => { getCardsRequest(1, industrySelected, region, integrationSelected); }}
-            selectedTitle={regionTitleMapper(regionSelected)}
-          />
-          <Dropdown
-            data={integrationData}
-            clickOutside={clickOutside}
-            fristTitle={integrationTitleMapper(0)}
-            selected={integration => { getCardsRequest(1, industrySelected, regionSelected, integration); }}
-            selectedTitle={integrationTitleMapper(integrationSelected)}
-          />
-          </div>
+          <div style={{ width: '100%' }}>
+            {/* <!-- *********************************************
+            *                     Dropdowns                      *
+            ********************************************** --> */}
+            <div className="dropdown-container">
+              <Dropdown
+                data={industriesData}
+                clickOutside={clickOutside}
+                fristTitle={industryTitleMapper(0)}
+                selected={industry => { getCardsRequest(1, industry, regionSelected, integrationSelected); }}
+                selectedTitle={industryTitleMapper(industrySelected)}
+              />
+              <Dropdown
+                data={regionsData}
+                clickOutside={clickOutside}
+                fristTitle={regionTitleMapper(0)}
+                selected={region => { getCardsRequest(1, industrySelected, region, integrationSelected); }}
+                selectedTitle={regionTitleMapper(regionSelected)}
+              />
+              <Dropdown
+                data={integrationData}
+                clickOutside={clickOutside}
+                fristTitle={integrationTitleMapper(0)}
+                selected={integration => { getCardsRequest(1, industrySelected, regionSelected, integration); }}
+                selectedTitle={integrationTitleMapper(integrationSelected)}
+              />
+            </div>
           </div>
         </div>
 
+      {/* <!-- *********************************************
+      *                       Cards                        *
+      ********************************************** --> */}
       <div style={{ display: 'flex', flexGrow: '1', zIndex: '1' }}>
         <div className="result-customers">
           <div className="card-container">
             {isGetLoading && <Loading />}
             {cards}
           </div>
-          {emptyCards}
+          <div style={{ paddingLeft: '1%', paddingRight: '1%' }}>{emptyCards}</div>
+          {isGetError && emptyCards}
+          {/* <!-- *********************************************
+          *                     Pagination                     *
+          ********************************************** --> */}
           <Pagination
             className="pagination-bar"
             currentPage={currentPage}
