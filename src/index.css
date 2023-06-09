@@ -26,8 +26,8 @@ code {
     monospace;
 }
 
-::-webkit-scrollbar {
-  width: 24px;
+/* ::-webkit-scrollbar {
+    width: 24px;
 }
 
 ::-webkit-scrollbar-track {
@@ -43,4 +43,4 @@ code {
 
 ::-webkit-scrollbar-button {
   display: none;
-}
+} */

@@ -82,6 +82,10 @@ function Customer() {
   useEffect(() => {
     setEmpty()
 
+    document.getElementById('result-customers').scrollIntoView({
+      behavior: "smooth"
+    })
+
     if (isGetSuccess) {
       setCards(posts.data.list.map((item, index) => {
         return (
@@ -109,14 +113,16 @@ function Customer() {
       }
 
       setTotalCount(posts.data.count_per.query)
-      window.scrollTo(0, 0)
     }
 
     if (isGetError) {
+      document.getElementById('result-customers').scrollIntoView({
+        behavior: "smooth"
+      })
+
       setCards(
         <h5 style={{ whiteSpace: 'nowrap', paddingLeft: '8.33333%', fontWeight: '700', margin: '0' }}>Please try again</h5>
       )
-      window.scrollTo(0, 0)
     }
   }, [posts, isGetSuccess, isGetError]);
 
@@ -132,7 +138,7 @@ function Customer() {
   return (
     <div className="App" onClick={() => { setClickOutside(!clickOutside); }}>
       <div style={{ paddingBlock: '14px' }}/>
-        <div className="result-customers">
+        <div id='result-customers' className="result-customers">
           <div style={{ width: '100%' }}>
             {/* <!-- *********************************************
             *                     Dropdowns                      *

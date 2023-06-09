@@ -19,7 +19,7 @@ const Dropdown = (props) => {
 
   const [state, setState] = useState({
     open: false,
-    selected: -1
+    selected: 0
   })
 
   const toggleDropdown = () => {
