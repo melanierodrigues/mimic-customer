@@ -1,6 +1,12 @@
+/* React */
+import React from 'react';
+import { ReactComponent as Arrow } from '../../assets/icons/arrow-down.svg'
+
+/* usePagination */
 import { DOTS, usePagination } from './usePagination';
 
-import "./Pagination.css";
+/* Style */
+import "./Pagination.scss";
 
 const Pagination = props => {
   const {
@@ -37,7 +43,7 @@ const Pagination = props => {
         className={`pagination-item ${currentPage === 1 ? "disabled" : ""}`}
         onClick={onPrevious}
       >
-        <div className="arrow left" />
+        <Arrow className="arrow-pagination left" />
       </li>
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === DOTS) {
@@ -58,7 +64,7 @@ const Pagination = props => {
         className={`pagination-item ${currentPage === lastPage ? "disabled" : ""}`}
         onClick={onNext}
       >
-        <div className="arrow right" />
+        <Arrow className="arrow-pagination right"/>
       </li>
     </ul>
   );
