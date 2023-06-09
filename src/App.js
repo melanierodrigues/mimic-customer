@@ -34,7 +34,7 @@ function App() {
   const [emptyCards, setEmpty] = useState([]);
   const [totalCount, setTotalCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [clickOutside, setClickOutside] = useState(false);
+  const [clickOutside, setClickOutside] = useState(true);
 
   /* Payload */
   const [industrySelected, setIndustrySelected] = useState('');
@@ -122,34 +122,36 @@ function App() {
 
   return (
     <div className="App" onClick={() => { setClickOutside(!clickOutside); }}>
-      <div style={{ paddingBlock: '10px' }}></div>
-      <div className="result-customers">
-        <div className="dropdown-container">
-        <Dropdown
-          data={industriesData}
-          clickOutside={clickOutside}
-          fristTitle={industryTitleMapper(0)}
-          selected={industry => { getCardsRequest(1, industry, regionSelected, integrationSelected); }}
-          selectedTitle={industryTitleMapper(industrySelected)}
-        />
-        <Dropdown
-          data={regionsData}
-          clickOutside={clickOutside}
-          fristTitle={regionTitleMapper(0)}
-          selected={region => { getCardsRequest(1, industrySelected, region, integrationSelected); }}
-          selectedTitle={regionTitleMapper(regionSelected)}
-        />
-        <Dropdown
-          data={integrationData}
-          clickOutside={clickOutside}
-          fristTitle={integrationTitleMapper(0)}
-          selected={integration => { getCardsRequest(1, industrySelected, regionSelected, integration); }}
-          selectedTitle={integrationTitleMapper(integrationSelected)}
-        />
+      <div style={{ paddingBlock: '14px' }}></div>
+        <div className="result-customers">
+        <div style={{ width: '100%' }}>
+          <div className="dropdown-container">
+          <Dropdown
+            data={industriesData}
+            clickOutside={clickOutside}
+            fristTitle={industryTitleMapper(0)}
+            selected={industry => { getCardsRequest(1, industry, regionSelected, integrationSelected); }}
+            selectedTitle={industryTitleMapper(industrySelected)}
+          />
+          <Dropdown
+            data={regionsData}
+            clickOutside={clickOutside}
+            fristTitle={regionTitleMapper(0)}
+            selected={region => { getCardsRequest(1, industrySelected, region, integrationSelected); }}
+            selectedTitle={regionTitleMapper(regionSelected)}
+          />
+          <Dropdown
+            data={integrationData}
+            clickOutside={clickOutside}
+            fristTitle={integrationTitleMapper(0)}
+            selected={integration => { getCardsRequest(1, industrySelected, regionSelected, integration); }}
+            selectedTitle={integrationTitleMapper(integrationSelected)}
+          />
+          </div>
+          </div>
         </div>
-      </div>
 
-      <div style={{ display: 'flex', justifyContent: 'center', flexGrow: '1', zIndex: '1' }}>
+      <div style={{ display: 'flex', flexGrow: '1', zIndex: '1' }}>
         <div className="result-customers">
           <div className="card-container">
             {isGetLoading && <Loading />}
@@ -165,7 +167,7 @@ function App() {
           />
         </div>
       </div>
-      <div style={{ paddingBlock: '10px' }}></div>
+      <div style={{ paddingBlock: '14px' }}></div>
     </div>
   );
 }

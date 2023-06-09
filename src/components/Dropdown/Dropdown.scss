@@ -36,7 +36,7 @@
 
     border-top-right-radius: 0.5rem;
     border-top-left-radius: 0.5rem;
-    background-color: var(--color);
+    background-color: var(--color--purple-500);
     z-index: 3;
 
     overflow: visible;
@@ -44,7 +44,8 @@
 
   &:hover {
     .top__border {
-      background-color: var(--color);
+      background-color: var(--color--purple-500);
+      border-color: var(--color--purple-500);
       color: var(--color--white);
     }
 
@@ -105,7 +106,8 @@
   white-space: nowrap;
 
   &.top__border--active {
-    background-color: var(--color);
+    background-color: var(--color--purple-500);
+    border-color: var(--color--purple-500);
     color: var(--color--white);
 
     border-bottom-right-radius: 0;
