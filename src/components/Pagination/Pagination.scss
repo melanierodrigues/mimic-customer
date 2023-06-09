@@ -1,8 +1,7 @@
 .pagination-container {
   display: flex;
   list-style-type: none;
-  margin-top: 45px;
-  margin-left: 12px;
+  margin-top: 2rem;
 }
 
 .pagination-container .pagination-item {
@@ -25,6 +24,9 @@
   flex-direction: column;
   justify-content: center;
   font-weight: 700;
+
+  padding: 0.5rem;
+  margin: 0.25rem;
 }
 
 .pagination-container .pagination-item.dots:hover {
@@ -66,13 +68,7 @@
 }
 
 .pagination-container .pagination-item.disabled {
-  .arrow-pagination.right {
-    display: none;
-  }
-
-  .arrow-pagination.left {
-    display: none;
-  }
+  display: none;
   pointer-events: none;
 }
 

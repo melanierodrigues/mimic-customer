@@ -102,13 +102,18 @@ function App() {
           <EmptyState title={posts.data.empty.title} content={posts.data.empty.content} image={posts.data.empty.image.src} imageAlt={posts.data.empty.image.alt}/>
         )
       }
+
+      window.scrollTo(0, 0)
     }
 
     if (isGetError) {
       setCards(
         <div>Error</div>
       )
+
+      window.scrollTo(0, 0)
     }
+
   }, [posts, isGetSuccess, isGetError]);
 
   useEffect(() => {
@@ -117,6 +122,7 @@ function App() {
 
   return (
     <div className="App" onClick={() => { setClickOutside(!clickOutside); }}>
+      <div style={{ paddingBlock: '10px' }}></div>
       <div className="result-customers">
         <div className="dropdown-container">
         <Dropdown
@@ -159,6 +165,7 @@ function App() {
           />
         </div>
       </div>
+      <div style={{ paddingBlock: '10px' }}></div>
     </div>
   );
 }
