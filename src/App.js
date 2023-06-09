@@ -22,9 +22,9 @@ import {
 } from '../src/assets/mappers/dropdowns'
 
 /* Data for dropdowns */
-import industriesData from './components/Dropdown/industries.data.json';
-import integrationData from './components/Dropdown/integration.data.json';
-import regionsData from './components/Dropdown/regions.data.json';
+import industriesData from './components/Dropdown/industries-dropdown.data.json';
+import integrationData from './components/Dropdown/integration-dropdown.data.json';
+import regionsData from './components/Dropdown/regions-dropdown.data.json';
 
 import './App.css';
 
