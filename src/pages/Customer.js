@@ -136,9 +136,9 @@ function Customer() {
   OnMountedCards()
 
   return (
-    <div className="App" onClick={() => { setClickOutside(!clickOutside); }}>
+    <div id='result-customers' onClick={() => { setClickOutside(!clickOutside); }}>
       <div style={{ paddingBlock: '14px' }}/>
-        <div id='result-customers' className="result-customers">
+        <div className="result-customers">
           <div style={{ width: '100%' }}>
             {/* <!-- *********************************************
             *                     Dropdowns                      *
